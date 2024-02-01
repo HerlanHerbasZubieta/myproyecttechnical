@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import Form from "@/components/Form/Form";
-import { useState } from "react";
 import { loginFormFields } from "@/utils/LoginFormFields";
+import { useState } from "react";
 
 const LoginPage = () => {
 
