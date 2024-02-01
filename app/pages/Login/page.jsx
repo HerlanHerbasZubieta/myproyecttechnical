@@ -35,7 +35,7 @@ const LoginPage = () => {
           onInputChange={getInput}
         />
         <p className="mt-4 text-gray-700 text-center">
-          Don't have an account? <Link href="/pages/SignUpPage">Create new account</Link>
+          Dont have an account? <Link href="/pages/SignUpPage">Create new account</Link>
         </p>
       </div>
     </>

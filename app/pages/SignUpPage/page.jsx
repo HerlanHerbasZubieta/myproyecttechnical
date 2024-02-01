@@ -1,16 +1,22 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import Image from "next/image";
-import registerUser from "@/service/RegistrationService";
-import SplitBackground from "@/components/SplitBackground";
-import Form from "@/components/Form/Form";
-import { signUpFormFields } from "@/utils/SignUpFormFields";
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
+import SplitBackground from '@/components/SplitBackground';
+import Form from '@/components/Form/Form';
+import { useState } from 'react';
+import { signUpFormFields } from '@/utils/SignUpFormFields';
+import { saveName, saveEmail, savePassword, savePhone, saveConfirmPassword } from '@/redux/slice';
+
 
 const SignUpPage = () => {
-  const router = useRouter();
+
+  const { nameUser, email, password, phone } = useSelector((state) => state.values)
+  const dispath = useDispatch();
+
+  
 
   const [data, setData] = useState({
     name: "",
@@ -27,9 +33,9 @@ const SignUpPage = () => {
 
   const sendInput = async (e) => {
     e.preventDefault();
-    await registerUser(data);
     router.push("/");
   };
+
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row items-center justify-center">
       <SplitBackground />
@@ -55,7 +61,7 @@ const SignUpPage = () => {
           onSubmitAction={sendInput}
         />
         <p className="mt-4 text-gray-700 text-center">
-          Already have an account? <Link href="/login">Login</Link>
+          Already have an account? <Link href="/Login">Login</Link>
         </p>
       </div>
     </div>
