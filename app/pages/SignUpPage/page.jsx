@@ -1,52 +1,18 @@
 "use client";
 
-import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import SplitBackground from "@/components/SplitBackground";
-import {
-  saveName,
-  saveEmail,
-  savePassword,
-  savePhone,
-  saveConfirmPassword,
-} from "@/redux/slice";
+
 import SignUpForm from "./SignUpForm";
+import { useFormLogic } from "@/service/FormService";
 
 const SignUpPage = () => {
   const { name, email, password, phone, confirmPassword } = useSelector(
     (state) => state.values
   );
-  const dispatch = useDispatch();
-  const router = useRouter();
+  const { handleInputChange, onSubmit } = useFormLogic();
 
-  const handleInputChange = (field, value) => {
-    switch (field) {
-      case "name":
-        dispatch(saveName(value));
-        break;
-      case "email":
-        dispatch(saveEmail(value));
-        break;
-      case "password":
-        dispatch(savePassword(value));
-        break;
-      case "phone":
-        dispatch(savePhone(value));
-        break;
-      case "confirmPassword":
-        dispatch(saveConfirmPassword(value));
-        break;
-      default:
-        break;
-    }
-  };
-
-  const sendInput = async (e) => {
-    e.preventDefault();
-    router.push("/");
-  };
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col md:flex-row items-center justify-center">
@@ -68,13 +34,13 @@ const SignUpPage = () => {
         </div>
 
         <SignUpForm
+          name={name}
           email={email}
           password={password}
-          name={name}
           phone={phone}
           confirmPassword={confirmPassword}
           onInputChange={handleInputChange}
-          onSubmit={sendInput}
+          onSubmit={() => onSubmit({ name, email, password, phone, confirmPassword })}
         />
 
         <p className="mt-4 text-gray-700 text-center">
