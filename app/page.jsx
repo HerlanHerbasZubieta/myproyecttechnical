@@ -1,6 +1,6 @@
 'use client'
 import SplitBackground from "@/components/SplitBackground";
-import LoginPage from "./pages/Login/page";
+import Login from "./pages/Login/page";
 
 export default function HomePage() {
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
         <SplitBackground />
 
         {/* Login Page */}
-        <LoginPage />
+        <Login />
       
       </body>
    

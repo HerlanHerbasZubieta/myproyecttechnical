@@ -6,6 +6,7 @@ import SplitBackground from "@/components/SplitBackground";
 
 import SignUpForm from "./SignUpForm";
 import { useFormLogic } from "@/service/FormService";
+import { useSelector } from "react-redux";
 
 const SignUpPage = () => {
   const { name, email, password, phone, confirmPassword } = useSelector(
