@@ -45,7 +45,7 @@ const SignUpPage = () => {
         />
 
         <p className="mt-4 text-gray-700 text-center">
-          Already have an account? <Link href="/Login">Login</Link>
+          Already have an account? <Link href="/">Login</Link>
         </p>
       </div>
     </div>
