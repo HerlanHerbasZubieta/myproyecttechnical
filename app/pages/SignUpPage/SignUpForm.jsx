@@ -46,7 +46,7 @@ const SignUpForm = ({ name, email, password, phone, confirmPassword, onInputChan
         placeholder={"Enter your password"}
       />
       <Button
-        onClick={onSubmit}
+        onSubmit={onSubmit}
         text="Sign Up"
         className="bg-blue-500 text-white p-2 rounded-md w-full"
       />
