@@ -1,35 +1,41 @@
-'use client'
+"use client";
 
-import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
-import SplitBackground from '@/components/SplitBackground';
-import { useState } from 'react';
-import { saveName, saveEmail, savePassword, savePhone, saveConfirmPassword } from '@/redux/slice';
-
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
+import SplitBackground from "@/components/SplitBackground";
+import {
+  saveName,
+  saveEmail,
+  savePassword,
+  savePhone,
+  saveConfirmPassword,
+} from "@/redux/slice";
+import SignUpForm from "./SignUpForm";
 
 const SignUpPage = () => {
-
-  const { name, email, password, phone, confirmPassword } = useSelector((state) => state.values)
+  const { name, email, password, phone, confirmPassword } = useSelector(
+    (state) => state.values
+  );
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
 
   const handleInputChange = (field, value) => {
     switch (field) {
-      case 'name':
+      case "name":
         dispatch(saveName(value));
         break;
-      case 'email':
+      case "email":
         dispatch(saveEmail(value));
         break;
-      case 'password':
+      case "password":
         dispatch(savePassword(value));
         break;
-      case 'phone':
+      case "phone":
         dispatch(savePhone(value));
         break;
-      case 'confirmPassword':
+      case "confirmPassword":
         dispatch(saveConfirmPassword(value));
         break;
       default:
@@ -60,82 +66,16 @@ const SignUpPage = () => {
         <div className="flex items-center justify-center mb-4 md:mb-6">
           <Image src="/images/logo.png" alt="Logo" width={150} height={150} />
         </div>
-        <form>
-          <div className="mb-4">
-            <label htmlFor="name" className="block text-gray-500 text-sm mb-2">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              placeholder=""
-              value={name}
-              onChange={(e) => handleInputChange('name', e.target.value)}
-              className="p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-            />
-          </div>
 
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-500 text-sm mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              placeholder=""
-              value={email}
-              onChange={(e) => handleInputChange('email', e.target.value)}
-              className="p-2 w-full border border-gray-300 rounded-md"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="phone" className="block text-gray-500 text-sm mb-2">
-              Phone
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              placeholder=""
-              value={phone}
-              onChange={(e) => handleInputChange('phone', e.target.value)}
-              className="p-2 w-full border border-gray-300 rounded-md"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-500 text-sm mb-2">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              placeholder=""
-              value={password}
-              onChange={(e) => handleInputChange('password', e.target.value)}
-              className="p-2 w-full border border-gray-300 rounded-md"
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="confirmPassword" className="block text-gray-500 text-sm mb-2">
-              Confirm your password
-            </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              placeholder=""
-              value={confirmPassword}
-              onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
-              className="p-2 w-full border border-gray-300 rounded-md"
-            />
-          </div>
-
-          {/* Botón de envío */}
-          <button type="button" onClick={sendInput} className="bg-blue-500 text-white p-2 rounded-md w-full">
-            Sign Up
-          </button>
-        </form>
+        <SignUpForm
+          email={email}
+          password={password}
+          name={name}
+          phone={phone}
+          confirmPassword={confirmPassword}
+          onInputChange={handleInputChange}
+          onSubmit={sendInput}
+        />
 
         <p className="mt-4 text-gray-700 text-center">
           Already have an account? <Link href="/Login">Login</Link>

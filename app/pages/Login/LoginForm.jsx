@@ -22,7 +22,7 @@ const LoginForm = ({ email, password, onInputChange, onSubmit }) => {
             type="email"
             value={email}
             onChange={onInputChange}
-            placeholder={"Ingresa tu email"}
+            placeholder={"Enter your email"}
           />
           <InputField
             id="password"
@@ -30,7 +30,7 @@ const LoginForm = ({ email, password, onInputChange, onSubmit }) => {
             type="password"
             value={password}
             onChange={onInputChange}
-            placeholder={"Ingresa tu contraseña"}
+            placeholder={"Enter your password"}
           />
           <p className="mt-4 mb-4 text-blue-600 text-right">
             <Link href="/pages/SignUpPage">Forget Password?</Link>
